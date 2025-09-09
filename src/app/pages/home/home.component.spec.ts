@@ -41,15 +41,28 @@ describe('HomeComponent', () => {
   });
 
   describe('About Section', () => {
-    it('should display about section with image and content', () => {
+    it('should display about section with image collage and content', () => {
       const compiled = fixture.nativeElement as HTMLElement;
       const aboutSection = compiled.querySelector('#about');
-      const aboutImage = compiled.querySelector('.about-image');
+      const aboutCollage = compiled.querySelector('.about-images-collage');
+      const collageImages = compiled.querySelectorAll('.about-images-collage img');
       const aboutTitle = compiled.querySelector('.about-text h2');
 
       expect(aboutSection).toBeTruthy();
-      expect(aboutImage).toBeTruthy();
+      expect(aboutCollage).toBeTruthy();
+      expect(collageImages.length).toBe(3);
       expect(aboutTitle?.textContent).toContain('About Us');
+    });
+
+    it('should have proper image classes in collage', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const mainImage = compiled.querySelector('.collage-main');
+      const topImage = compiled.querySelector('.collage-top');
+      const bottomImage = compiled.querySelector('.collage-bottom');
+
+      expect(mainImage).toBeTruthy();
+      expect(topImage).toBeTruthy();
+      expect(bottomImage).toBeTruthy();
     });
   });
 
